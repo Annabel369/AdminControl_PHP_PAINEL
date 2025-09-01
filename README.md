@@ -3,6 +3,8 @@ This project is a lightweight and secure control panel, designed to remotely man
 
 <img width="897" height="592" alt="image" src="https://github.com/user-attachments/assets/c234410f-aa27-4a8c-9b9a-cfd7d021af90" />
 
+Plugin https://github.com/Annabel369/AdminControl
+
 
 # Core Features
 Login and Registration System: Securely authenticate users using encrypted passwords (hashing). New user registration can be enabled or disabled by an administrator, with success and error messages in different languages.
@@ -43,3 +45,4 @@ Enable Registration: In the db_connect.php file, set $allow_registration = true;
 
 
 Access: Access login.php in your browser. 
+
