@@ -8,6 +8,14 @@ require_once 'db_connect.php';
 // Get URL parameters
 $type = $_GET['type'] ?? 'admins';
 $page = $_GET['page'] ?? 1;
+
+// Validate and sanitize the input to prevent injection
+$type = filter_var($type, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$page = filter_var($page, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1)));
+if ($page === false) {
+    $page = 1; // Default to page 1 if input is invalid
+}
+
 $itemsPerPage = 10;
 $offset = ($page - 1) * $itemsPerPage;
 
@@ -19,11 +27,13 @@ try {
     switch ($type) {
         case 'admins':
             $countSql = "SELECT COUNT(*) AS total_count FROM admins";
-            $sql = "SELECT name, steamid, permission, level, timestamp AS granted_at FROM admins ORDER BY timestamp DESC LIMIT :itemsPerPage OFFSET :offset";
+            // Convert steamid to a string to avoid precision loss in JS
+            $sql = "SELECT name, CAST(steamid AS CHAR) AS steamid, permission, level, timestamp AS granted_at FROM admins ORDER BY timestamp DESC LIMIT :itemsPerPage OFFSET :offset";
             break;
         case 'bans':
             $countSql = "SELECT COUNT(*) AS total_count FROM bans";
-            $sql = "SELECT steamid, reason, unbanned, timestamp FROM bans ORDER BY timestamp DESC LIMIT :itemsPerPage OFFSET :offset";
+            // Convert steamid to a string to avoid precision loss in JS
+            $sql = "SELECT CAST(steamid AS CHAR) AS steamid, reason, unbanned, timestamp FROM bans ORDER BY timestamp DESC LIMIT :itemsPerPage OFFSET :offset";
             break;
         case 'ip_bans':
             $countSql = "SELECT COUNT(*) AS total_count FROM ip_bans";
@@ -31,7 +41,8 @@ try {
             break;
         case 'mutes':
             $countSql = "SELECT COUNT(*) AS total_count FROM mutes";
-            $sql = "SELECT steamid, reason, unmuted, timestamp FROM mutes ORDER BY timestamp DESC LIMIT :itemsPerPage OFFSET :offset";
+            // Convert steamid to a string to avoid precision loss in JS
+            $sql = "SELECT CAST(steamid AS CHAR) AS steamid, reason, unmuted, timestamp FROM mutes ORDER BY timestamp DESC LIMIT :itemsPerPage OFFSET :offset";
             break;
         default:
             // Handle invalid data type and return an error

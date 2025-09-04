@@ -1,12 +1,7 @@
-# Control Panel for CS2 Servers
+Control Panel for CS2 Servers
 This project is a lightweight and secure control panel, designed to remotely manage Counter-Strike 2 (CS2) servers via RCON. The panel includes user authentication features, registration control, and a user-friendly interface to send commands to the server.
 
-<img width="897" height="592" alt="image" src="https://github.com/user-attachments/assets/c234410f-aa27-4a8c-9b9a-cfd7d021af90" />
-
-Plugin https://github.com/Annabel369/AdminControl
-
-
-# Core Features
+Core Features
 Login and Registration System: Securely authenticate users using encrypted passwords (hashing). New user registration can be enabled or disabled by an administrator, with success and error messages in different languages.
 
 Secure Access: The main page (index.php) is protected by a session system that requires a login. If the user is not authenticated, they are redirected to the login page.
@@ -38,11 +33,9 @@ lang/: Folder containing the translation files (pt.json and en.json).
 
 img/: Folder to store project images and icons.
 
-# Setup and Usage
+Setup and Usage
 Configure the Database: Edit the db_connect.php file with your MySQL credentials ($host, $db, $user, $pass).
 
 Enable Registration: In the db_connect.php file, set $allow_registration = true; to allow new registrations. After the first registration, it is recommended to set the value back to false.
 
-
 Access: Access login.php in your browser. 
-

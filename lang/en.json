@@ -21,7 +21,7 @@
   "status_unbanned": "Unbanned",
   "status_muted": "Muted",
   "status_unmuted": "Unmuted",
-  "footer": "© 2025 — Created by Amauri Bueno dos Santos with support from Copilot. Clean code, sharp server.",
+  "footer": "© 2025 — Created by Amauri Bueno dos Santos with support from Copilot. Clean code, sharp server. v2.0.1",
 
   "rcon_label": "RCON Command:",
   "rcon_placeholder": "e.g. status",

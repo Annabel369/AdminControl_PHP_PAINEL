@@ -21,7 +21,7 @@
   "status_unbanned": "Desbanido",
   "status_muted": "Silenciado",
   "status_unmuted": "Reativado",
-  "footer": "© 2025 — Criado por Amauri Bueno dos Santos com apoio da Copilot. Código limpo, servidor afiado.",
+  "footer": "© 2025 — Criado por Amauri Bueno dos Santos com apoio da Copilot. Código limpo, servidor afiado. v2.0.1",
 
   "rcon_label": "Comando RCON:",
   "rcon_placeholder": "Ex: status",
