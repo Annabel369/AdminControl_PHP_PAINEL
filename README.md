@@ -1,8 +1,52 @@
-Control Panel for CS2 Servers
+# Control Panel for CS2 Servers
 This project is a lightweight and secure control panel, designed to remotely manage Counter-Strike 2 (CS2) servers via RCON. The panel includes user authentication features, registration control, and a user-friendly interface to send commands to the server.
 
-Core Features
+#Core Features
 Login and Registration System: Securely authenticate users using encrypted passwords (hashing). New user registration can be enabled or disabled by an administrator, with success and error messages in different languages.
+
+#SQL
+
+        CREATE TABLE IF NOT EXISTS bans (
+            steamid BIGINT UNSIGNED NOT NULL,
+            reason VARCHAR(255),
+            unbanned BOOLEAN NOT NULL DEFAULT FALSE,
+            timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (steamid)
+        );
+        
+        CREATE TABLE IF NOT EXISTS ip_bans (
+            ip_address VARCHAR(45) NOT NULL,
+            reason VARCHAR(255),
+            unbanned BOOLEAN NOT NULL DEFAULT FALSE,
+            timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (ip_address)
+        );
+        
+        CREATE TABLE IF NOT EXISTS admins (
+            steamid BIGINT UNSIGNED NOT NULL,
+            name VARCHAR(64),
+            permission VARCHAR(64),
+            level INT NOT NULL,
+            expires_at DATETIME,
+            granted_by BIGINT UNSIGNED,
+            timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (steamid)
+        );
+        
+        CREATE TABLE IF NOT EXISTS mutes (
+            steamid BIGINT UNSIGNED NOT NULL,
+            reason VARCHAR(255),
+            timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            unmuted BOOLEAN NOT NULL DEFAULT FALSE,
+            PRIMARY KEY (steamid)
+        );
+        
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );");
 
 Secure Access: The main page (index.php) is protected by a session system that requires a login. If the user is not authenticated, they are redirected to the login page.
 
@@ -37,5 +81,6 @@ Setup and Usage
 Configure the Database: Edit the db_connect.php file with your MySQL credentials ($host, $db, $user, $pass).
 
 Enable Registration: In the db_connect.php file, set $allow_registration = true; to allow new registrations. After the first registration, it is recommended to set the value back to false.
+
 
 Access: Access login.php in your browser. 
