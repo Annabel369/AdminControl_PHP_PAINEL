@@ -1,6 +1,8 @@
 # Control Panel for CS2 Servers
 This project is a lightweight and secure control panel, designed to remotely manage Counter-Strike 2 (CS2) servers via RCON. The panel includes user authentication features, registration control, and a user-friendly interface to send commands to the server.
 
+
+
 #Core Features
 Login and Registration System: Securely authenticate users using encrypted passwords (hashing). New user registration can be enabled or disabled by an administrator, with success and error messages in different languages.
 
@@ -84,3 +86,4 @@ Enable Registration: In the db_connect.php file, set $allow_registration = true;
 
 
 Access: Access login.php in your browser. 
+
