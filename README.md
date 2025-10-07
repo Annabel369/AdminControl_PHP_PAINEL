@@ -214,3 +214,4 @@ Enable Registration: In the db_connect.php file, set $allow_registration = true;
 Access: Access login.php in your browser. 
 
 
+
